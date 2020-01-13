@@ -15,6 +15,16 @@ impl Criterion for Attribute {
         document: &RawDocument<'a, 'tag>,
     ) -> usize
     {
-        document.bare_matches.len()
+        let mut attr = u16::max_value();
+
+        // we must take the attribute of the best matching words proximity
+        for bm in document.bare_matches {
+            for di in postings_lists[bm.postings_list].as_slice() {
+                attr = cmp::min(attr, di.attribute);
+                if attr == 0 { return 0; }
+            }
+        }
+
+        attr as usize
     }
 }
