@@ -1,0 +1,15 @@
+[package]
+name = "ocrit"
+version = "0.1.0"
+authors = ["Clément Renault <clement@meilisearch.com>"]
+edition = "2018"
+
+[dependencies]
+compact_arena = "0.4.0"
+rand = "0.7.2"
+slice-group-by = "0.2.6"
+
+[dependencies.sdset]
+version = "0.3.6"
+git = "https://github.com/Kerollmops/sdset"
+branch = "intersection-by-key"
